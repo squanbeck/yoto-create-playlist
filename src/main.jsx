@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Index from "./Index";
+import Index from "./index.jsx";
 import Login from "./pages/Login";
 import "./index.css";
 import AppForm from "./pages/AppForm";
