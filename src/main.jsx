@@ -7,7 +7,7 @@ import "./index.css";
 import AppForm from "./pages/AppForm";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/yoto-create-playlist">
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/app" element={<AppForm />} />
