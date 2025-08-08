@@ -31,7 +31,7 @@ export default function App() {
         if (groupRes.ok) {
           const groups = await groupRes.json();
           console.log("groups", groups);
-          groups[0].items.map((item) => {
+          groups[0].items.map(async (item) => {
             const itemRes = await fetch(`https://api.yotoplay.com/card/family/library/groups/${item.contentId}`, {
               headers: {
                 Authorization: `Bearer ${tokens.accessToken}`,
@@ -52,7 +52,7 @@ export default function App() {
         });
 
         if (cardRes.ok) {
-          const cards = await cardRes.json();
+          const { cards } = await cardRes.json();
           console.log("cards", cards);
           setCards(cards);
         } else {
