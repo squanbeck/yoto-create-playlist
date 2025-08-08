@@ -29,8 +29,17 @@ export default function App() {
         });
 
         if (groupRes.ok) {
-          const { groups } = await groupRes.json();
+          const groups = await groupRes.json();
           console.log("groups", groups);
+          groups[0].items.map((item) => {
+            const itemRes = await fetch(`https://api.yotoplay.com/card/family/library/groups/${item.contentId}`, {
+              headers: {
+                Authorization: `Bearer ${tokens.accessToken}`,
+              },
+            })
+            const group = itemRes.json();
+            console.log("group", group);
+          });
           setGroups(groups);
         } else {
           console.error(`Failed to fetch groups: ${res.status}`);
