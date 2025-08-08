@@ -21,7 +21,7 @@ function Index() {
         console.log("Initial login: Exchanging authorization code for tokens using PKCE...");
         console.log("Client ID:", import.meta.env.VITE_CLIENT_ID);
         console.log("Code:", code);
-        console.log("Redirect URI:", window.location.origin);
+        console.log("Redirect URI:", window.location.origin + "/yoto-create-playlist");
         
         // Get the stored code verifier
         const codeVerifier = sessionStorage.getItem('pkce_code_verifier');
@@ -41,7 +41,7 @@ function Index() {
             client_id: import.meta.env.VITE_CLIENT_ID,
             code_verifier: codeVerifier,
             code,
-            redirect_uri: window.location.origin,
+            redirect_uri: window.location.origin + "/yoto-create-playlist",
           }),
         });
         
