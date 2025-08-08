@@ -24,7 +24,7 @@ export default function Login() {
         client_id: clientId,
         code_challenge: code_challenge,
         code_challenge_method: "S256",
-        redirect_uri: window.location.origin,
+        redirect_uri: window.location.origin + "/yoto-create-playlist",
       }).toString();
 
       window.location.href = authUrl.toString();
