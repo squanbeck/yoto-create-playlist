@@ -5,7 +5,7 @@ import { getTokens, storageKey } from "../token-utils";
 export default function App() {
   const navigate = useNavigate();
   const [cards, setCards] = useState([]);
-  const [groups, setGroups] = useState([]);
+  // const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -40,7 +40,7 @@ export default function App() {
             const group = itemRes.json();
             console.log("group", group);
           });
-          setGroups(groups);
+          // setGroups(groups);
         } else {
           console.error(`Failed to fetch groups: ${res.status}`);
         }
