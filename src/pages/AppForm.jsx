@@ -52,7 +52,7 @@ export default function App() {
         });
 
         if (cardRes.ok) {
-          const { cards } = await cardRes.json();
+          const cards = await cardRes.json();
           console.log("cards", cards);
           setCards(cards);
         } else {
