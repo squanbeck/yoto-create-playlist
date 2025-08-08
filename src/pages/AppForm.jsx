@@ -5,11 +5,12 @@ import { getTokens, storageKey } from "../token-utils";
 export default function App() {
   const navigate = useNavigate();
   const [cards, setCards] = useState([]);
+  const [groups, setGroups] = userState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function getCards() {
+    async function getData() {
       try {
         setLoading(true);
         setError(null);
@@ -21,27 +22,40 @@ export default function App() {
           return;
         }
 
-        const res = await fetch("https://api.yotoplay.com/content/mine", {
+        const groupRes = await fetch("https://api.yotoplay.com/card/family/library/groups", {
           headers: {
             Authorization: `Bearer ${tokens.accessToken}`,
           },
         });
 
-        if (res.ok) {
-          const { cards } = await res.json();
+        if (groupRes.ok) {
+          const { groups } = await groupRes.json();
+          setGroups(groups);
+        } else {
+          console.error(`Failed to fetch groups: ${res.status}`);
+        }
+        
+        const cardRes = await fetch("https://api.yotoplay.com/content/mine", {
+          headers: {
+            Authorization: `Bearer ${tokens.accessToken}`,
+          },
+        });
+
+        if (cardRes.ok) {
+          const { cards } = await cardRes.json();
           setCards(cards);
         } else {
           console.error(`Failed to fetch cards: ${res.status}`);
         }
       } catch (error) {
-        console.error("Error fetching cards:", error);
+        console.error("Error fetching data:", error);
         setError(error.message);
       } finally {
         setLoading(false);
       }
     }
 
-    getCards();
+    getData();
   }, [navigate]);
 
   const handleLogout = () => {
@@ -107,6 +121,9 @@ export default function App() {
           <li key={card.cardId}>{card.title}</li>
         ))}
       </ul>
+      <div>
+        {groups}
+      </div>
     </div>
   );
 }
