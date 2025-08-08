@@ -5,7 +5,7 @@ import { getTokens, storageKey } from "../token-utils";
 export default function App() {
   const navigate = useNavigate();
   const [cards, setCards] = useState([]);
-  const [groups, setGroups] = userState([]);
+  const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
