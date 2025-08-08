@@ -44,7 +44,7 @@ export default function App() {
 
         if (cardRes.ok) {
           const { cards } = await cardRes.json();
-          console.log("cards", cards");
+          console.log("cards", cards);
           setCards(cards);
         } else {
           console.error(`Failed to fetch cards: ${res.status}`);
