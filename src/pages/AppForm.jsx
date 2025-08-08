@@ -30,6 +30,7 @@ export default function App() {
 
         if (groupRes.ok) {
           const { groups } = await groupRes.json();
+          console.log("groups", groups);
           setGroups(groups);
         } else {
           console.error(`Failed to fetch groups: ${res.status}`);
@@ -43,6 +44,7 @@ export default function App() {
 
         if (cardRes.ok) {
           const { cards } = await cardRes.json();
+          console.log("cards", cards");
           setCards(cards);
         } else {
           console.error(`Failed to fetch cards: ${res.status}`);
@@ -121,9 +123,6 @@ export default function App() {
           <li key={card.cardId}>{card.title}</li>
         ))}
       </ul>
-      <div>
-        {groups}
-      </div>
     </div>
   );
 }
