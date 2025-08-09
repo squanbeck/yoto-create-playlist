@@ -52,7 +52,7 @@ export default function App() {
           console.error(`Failed to fetch groups: ${res.status}`);
         }
         
-        const cardRes = await fetch("https://api.yotoplay.com/content/mine", {
+        const cardRes = await fetch("https://api.yotoplay.com/content/all", {
           headers: {
             Authorization: `Bearer ${tokens.accessToken}`,
           },
